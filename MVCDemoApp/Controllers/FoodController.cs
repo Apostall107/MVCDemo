@@ -13,9 +13,10 @@ namespace MVCDemoApp.Controllers
 			_foodData = foodData;
 			_orderData = orderData;
 		}
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			var foodList = await _foodData.GetAll();
+			return View(_foodData);
 		}
 	}
 }
